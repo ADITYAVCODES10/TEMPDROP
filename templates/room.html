@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Room {{ room_id }}</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center py-10">
+  <div class="bg-white shadow-md rounded-lg p-6 w-full max-w-lg">
+    <h1 class="text-xl font-semibold mb-4">Room ID: {{ room_id }}</h1>
+    <form method="post" enctype="multipart/form-data" class="mb-6 space-y-4">
+      <input type="file" name="file" required class="w-full">
+      <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Upload File</button>
+    </form>
+    <h2 class="text-lg font-semibold mb-2">Files</h2>
+    <ul class="space-y-2">
+      {% for file in files %}
+        <li>
+          <a href="/download/{{ room_id }}/{{ file }}" class="text-blue-600 underline">{{ file }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</body>
+</html>
